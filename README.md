@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌐 Personal Portfolio Website
 
-## Getting Started
+A modern and responsive personal portfolio website built with **Next.js** and **React.js**.
+This project showcases my professional experience, technical skills, and featured projects with smooth animations and interactive UI components.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Features
+
+- ✨ Responsive design (Mobile / Tablet / Desktop)
+- 🎯 Scroll Spy navigation with active menu highlighting
+- 🎨 Animated sliding navbar
+- 🖥️ Project showcase section
+- 📊 Technical skills with level indicators
+- 🌙 Modern UI with gradient and glassmorphism effects
+- 🔗 Social media integration (LinkedIn, GitHub, Instagram)
+
+---
+
+## 🛠 Tech Stack
+
+- **Frontend:** React.js, Next.js (SSR)
+- **Styling:** Tailwind CSS
+- **UI Components:** Custom components
+- **Animations:** CSS transitions & Intersection Observer API
+
+---
+
+## 📂 Project Structure
+
+```
+/components
+  ├── Navbar.tsx
+  ├── ProfileSection.tsx
+  ├── SkillsSection.tsx
+  ├── ProjectsSection.tsx
+  └── ContactSection.tsx
+
+/app
+  └── page.tsx
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📸 Sections Included
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Profile** – Professional summary and introduction
+- **Technical Skills** – Skill levels with progress indicators
+- **Project Experience** – Highlighted web applications and dashboards
+- **Contact** – Social links and contact information
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## ⚡ Performance Optimization
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Implemented **Next.js Server-Side Rendering (SSR)**
+- Optimized bundle size with code splitting
+- Improved load time and smooth scrolling behavior
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 📬 Contact
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+If you would like to collaborate or discuss opportunities:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- 📧 Email: [your.email@example.com](mailto:your.email@example.com)
+- 💼 LinkedIn: https://linkedin.com/in/yourprofile
+- 💻 GitHub: https://github.com/yourusername
+
+---
+
+> Built with passion and continuous learning 🚀
