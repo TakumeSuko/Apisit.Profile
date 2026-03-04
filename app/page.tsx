@@ -1,65 +1,112 @@
-import Image from "next/image";
+'use client';
+import { Menu, X } from 'lucide-react';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import ContactSection from './components/ContactSection';
+import ProjectsSection from './components/ProjectsSection';
+import SkillSection from './components/SkillSection';
+import UserProfile from './components/UserProfile';
+
+function Navbar() {
+  const [menu, setMenu] = useState('profile');
+  const [isOpen, setIsOpen] = useState(false);
+
+  const navLinks = [
+    { name: 'Profile', tag: 'profile', href: '#profile' },
+    { name: 'Skills', tag: 'skills', href: '#skills' },
+    { name: 'Projects', tag: 'projects', href: '#projects' },
+    { name: 'Contacts', tag: 'contacts', href: '#contacts' },
+  ];
+
+  useEffect(() => {
+    const sections = document.querySelectorAll('section');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setMenu(entry.target.id);
+          }
+        });
+      },
+      {
+        threshold: 0.6,
+        rootMargin: '0px 0px -20% 0px',
+      },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
+
+  const selectMenu = (menu: string) => {
+    setMenu(menu);
+    setIsOpen(false);
+  };
+
+  return (
+    <nav className='bg-gradient-to-br from-[#050816] via-[#0a0f2c] to-black shadow-md fixed w-full z-50 '>
+      <div className='max-w-7xl mx-auto px-4 pt-1'>
+        <div className='flex justify-between items-center h-16'>
+          {/* Logo */}
+          <div className='text-2xl font-bold text-blue-600'></div>
+
+          {/* Desktop Menu */}
+          <div className='hidden md:flex space-x-8 bg-gray-200 pl-2 pr-2 p-1  border-2 border-solid rounded-l-full rounded-r-full text-lg'>
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={() => selectMenu(link.tag)}
+                className={`${menu === link.tag ? 'bg-purple-400' : 'bg-gray-200'} ${menu === link.tag ? 'text-white' : 'text-gray-700'}  hover:text-white hover:scale-105 hover:bg-purple-300 p-2 pl-4 pr-4 rounded-full transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]`}
+              >
+                {link.name}
+              </a>
+            ))}
+          </div>
+
+          {/* Mobile Button */}
+          <div className='md:hidden'>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className='text-gray-700'
+            >
+              {isOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className='md:hidden bg-white shadow-lg'>
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              className='block px-4 py-3 border-b text-gray-700 hover:bg-gray-100'
+              onClick={() => setIsOpen(false)}
+            >
+              {link.name}
+            </Link>
+          ))}
+        </div>
+      )}
+    </nav>
+  );
+}
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+    <div className='flex min-h-screen bg-zinc-50 font-sans'>
+      <Navbar />
+      <div className='flex flex-col w-full bg-gradient-to-br from-[#050816] via-[#0a0f2c] to-black'>
+        <UserProfile />
+        <SkillSection />
+        <ProjectsSection />
+        <ContactSection />
+      </div>
     </div>
   );
 }

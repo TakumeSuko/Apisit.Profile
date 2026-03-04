@@ -1,0 +1,25 @@
+# Build and Tooling Outputs
+.next/
+/analyze
+/coverage
+/build
+/out
+/node_modules
+
+# Security & Environment
+.env*
+*.crt
+*.pem
+
+# Configuration & Locks
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# Shell Scripts (Formatting can sometimes break syntax)
+*.sh
+
+# CI/CD and Docker
+.gitlab-ci.yml
+Dockerfile
+.dockerignore
